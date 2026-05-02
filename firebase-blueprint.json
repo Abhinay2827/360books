@@ -1,0 +1,77 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "User Profile",
+      "description": "Basic user information and role",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "businessName": { "type": "string" },
+        "gstNumber": { "type": "string" },
+        "email": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "businessName", "email"]
+    },
+    "Invoice": {
+      "title": "Invoice",
+      "description": "Business invoice details",
+      "type": "object",
+      "properties": {
+        "invoiceNumber": { "type": "string" },
+        "clientName": { "type": "string" },
+        "amount": { "type": "number" },
+        "status": { "type": "string", "enum": ["paid", "pending", "overdue"] },
+        "dueDate": { "type": "string", "format": "date-time" },
+        "ownerId": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["invoiceNumber", "clientName", "amount", "status", "ownerId"]
+    },
+    "LoanApplication": {
+      "title": "Loan Application",
+      "description": "MSME loan application status",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "amountRequested": { "type": "number" },
+        "status": { "type": "string" },
+        "lender": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "amountRequested", "status"]
+    },
+    "Customer": {
+      "title": "Customer",
+      "description": "CRM customer contact",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "phone": { "type": "string" },
+        "company": { "type": "string" },
+        "segment": { "type": "string", "enum": ["lead", "customer", "vip"] },
+        "ownerId": { "type": "string" }
+      },
+      "required": ["name", "email", "ownerId"]
+    }
+  },
+  "firestore": {
+    "users/{userId}": {
+      "schema": "UserProfile",
+      "description": "User profiles"
+    },
+    "invoices/{invoiceId}": {
+      "schema": "Invoice",
+      "description": "Business invoices"
+    },
+    "loans/{loanId}": {
+      "schema": "LoanApplication",
+      "description": "Loan applications"
+    },
+    "customers/{customerId}": {
+      "schema": "Customer",
+      "description": "CRM customers"
+    }
+  }
+}

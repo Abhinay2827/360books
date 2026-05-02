@@ -1,0 +1,6 @@
+{
+  "name": "360Books",
+  "description": "India's first all-in-one Business Super App for startups and SMEs, covering invoicing, GST, taxation, lending, and investor connectivity.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["AI-driven financial insights", "Automated GST & Tax compliance", "MSME Lending marketplace", "Investor & Mentor networking"]
+}
